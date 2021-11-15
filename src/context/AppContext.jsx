@@ -1,36 +1,43 @@
-import { useReducer, createContext, useContext } from "react";
-import axios from "axios";
-
-async function getUsers() {
-    try {
-      const response = await axios({
-        method: 'get',
-        url: 'https://yalantis-react-school-api.yalantis.com/api/task0/users',
-        responseType: 'stream'
-      });
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  getUsers();
+import { useReducer, createContext, useContext, useCallback } from "react";
+import getData from '../api';
 
 
 const AppStateContext = createContext();
 const AppDispatchContext = createContext();
 
 const initialState = {
-    birthdayList: [],
+    activeList: [],
     employeesList: [],
-    wishlist: [],
+    spiner: true,
+    error: false
 }
 
 function reducer(state, action) {
     switch (action.type) {
-        case "chooseEmployee":
+        case "showEmployees":
             return {
                 ...state,
+                employeesList: action.data,
+                spiner: false
+            }
+        case "catchError":
+            return {
+                ...state,
+                spiner: false,
+                error: true
+            }
 
+        case "toggleActive":
+            return {
+                ...state,
+                activeList: state.activeList.includes(action.value) ? [...state.activeList] :
+                [action.value, ...state.activeList]
+            }
+
+        case "toggleNotActive":
+            return {
+                ...state,
+                activeList: state.activeList.filter(el => el !== action.value)
             }
         
         default:
@@ -56,4 +63,45 @@ export const  useAppContext = () => {
         throw Error("useAppContext must be called within AppContext");
     }
     return context;
+}
+
+export const  useDispatchContext = () => {
+    const context = useContext(AppDispatchContext);
+    if (!context) {
+        throw Error("useDispatchContext must be called within AppContext");
+    }
+    return context;
+}
+
+export const useLoadEmployees = () => {
+    const dispatch = useDispatchContext();
+
+    const loadEmployees = useCallback(async () => {
+        return getData().then((data) => {
+            if(Array.isArray(data)) {
+                dispatch({type: "showEmployees", data})
+            } else {
+                dispatch({type: "catchError"})
+            }
+        })
+    }, [dispatch])
+    return loadEmployees;
+}
+
+export const useToggleActive = () => {
+    const dispatch = useDispatchContext();
+
+    function toggleActive(value) {
+        dispatch({type: "toggleActive", value})
+    }
+    return toggleActive;
+}
+
+export const useToggleNotActive = () => {
+    const dispatch = useDispatchContext();
+
+    function toggleNotActive(value) {
+        dispatch({type: "toggleNotActive", value})
+    }
+    return toggleNotActive;
 }

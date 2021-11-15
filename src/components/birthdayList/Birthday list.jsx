@@ -7,9 +7,7 @@ const getBirthMonth = (value = 0) => {
 }
 
 const BirthdayList = () => {
-    return (
-        <div className="birthday-list">
-          <div className="header">Employees Birtday</div>
+  return (
           <div className="months_of_birth">
             <Month month={getBirthMonth()} />
             <Month month={getBirthMonth(1)} />
@@ -24,9 +22,8 @@ const BirthdayList = () => {
             <Month month={getBirthMonth(10)} />
             <Month month={getBirthMonth(11)} />
           </div>
-        </div>
     );
   }
   
-  export default BirthdayList;
+export default BirthdayList;
   

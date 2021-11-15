@@ -1,0 +1,61 @@
+.employees-container {
+    display: flex;
+    padding: 10px;
+}
+
+.employees-list {
+    width: 60%;
+}
+
+.birthday-list {
+    width: 40%;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.employees-block {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    border-right: solid 2px;
+}
+
+.letter-container {
+    width: 150px;
+    margin: 10px;
+}
+
+.letter {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+.employee {
+    margin: 5px;
+}
+
+.fullName {
+    font-weight: bold;
+}
+
+.label {
+    margin-left: 3px;
+}
+
+.months_of_birth {
+    margin-left: 50px;
+    padding-top: 20px;
+    border-top: solid 2px;
+}
+
+.month {
+    font-weight: bold;
+}
+
+.month_emp {
+    font-weight: 300;
+}

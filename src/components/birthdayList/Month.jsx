@@ -1,12 +1,27 @@
+import { useAppContext } from '../../context/AppContext';
 
 const monthNames = ["January", "February", "March",  "April", "May", "June",  "July", "August", "September", "October", "November", "December"];
-// const d2 = new Date('2019-01-24T06:56:59.249Z');
-// console.log(d2.getMonth());
 
 const Month = ({ month }) => {
+    const state = useAppContext();
+    const monthArray = state.activeList.filter((el) => new Date(el.dob).getMonth() === month);
     return (
-        <div className="month_of_birth">
-             {monthNames[month]}
+        <div className="month">
+            <div>{monthNames[month]}</div>
+            {monthArray.length > 0 ?
+                <>
+                    {   monthArray.map((el) => {
+                            return (
+                                <div className="month_emp" key={el.id}>
+                                    <input type="radio" defaultChecked />
+                                    {el.firstName} {el.lastName}
+                                </div> 
+                            )
+                        }) 
+                    }
+                </> :
+                <div className="month_emp">No employees</div>
+            }   
         </div>
     );
   }
