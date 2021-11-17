@@ -8,21 +8,20 @@ import { useLoadEmployees, useAppContext } from '../context/AppContext';
     const state = useAppContext();
     const loadEmployees = useLoadEmployees();
 
-
     useEffect(() => {
             loadEmployees();
       }, [loadEmployees]);
   
         return (
-            <div className="employees-container">
-                <div className="employees-list">
+            <div className="employees_container">
+                <div className="employees_list">
                     <div className="header">Employees</div>
                     {state.spiner ? <p>Loading...</p> : 
                         <EmployeesList data={state.employeesList} error={state.error} />
                     }
                 </div>
                 
-                <div className="birthday-list">
+                <div className="birthday_list">
                     <div className="header">Employees Birtday</div>
                     <BirthdayList />
                 </div>

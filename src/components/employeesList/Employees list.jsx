@@ -1,10 +1,11 @@
 import LetterBlock from './LetterBlock';
+import PropTypes from 'prop-types';
 
 const EmployeesList = ({ data, error }) => {
       return (
         <>
             {error ? <p>Error</p> : 
-            <div className="employees-block">
+            <div className="employees_block">
             <LetterBlock letter={'A'} data={data} />
             <LetterBlock letter={'B'} data={data} />
             <LetterBlock letter={'C'} data={data} />
@@ -35,7 +36,12 @@ const EmployeesList = ({ data, error }) => {
             }
         </>
     );
-  }
+}
+
+EmployeesList.propTypes = {
+  error: PropTypes.bool.isRequired,
+  data: PropTypes.array.isRequired
+}
   
-  export default EmployeesList;
+export default EmployeesList;
   

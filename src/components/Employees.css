@@ -1,13 +1,13 @@
-.employees-container {
+.employees_container {
     display: flex;
     padding: 10px;
 }
 
-.employees-list {
+.employees_list {
     width: 60%;
 }
 
-.birthday-list {
+.birthday_list {
     width: 40%;
 }
 
@@ -17,14 +17,14 @@
     font-weight: bold;
 }
 
-.employees-block {
+.employees_block {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
     border-right: solid 2px;
 }
 
-.letter-container {
+.letter_container {
     width: 150px;
     margin: 10px;
 }
@@ -37,12 +37,19 @@
 .employee {
     margin: 5px;
 }
-
-.fullName {
+.fullName_active {
+    margin: 5px;
     font-weight: bold;
+    color: blue; 
 }
 
-.label {
+.fullName_not-active {
+    margin: 5px;
+    font-weight: bold;
+    color: black; 
+}
+
+.radio_label {
     margin-left: 3px;
 }
 
@@ -56,6 +63,25 @@
     font-weight: bold;
 }
 
-.month_emp {
-    font-weight: 300;
+.month_name {
+    margin-bottom: 5px;
+    border-top: ridge 2px;
+}
+
+.month_block {
+    font-weight: bold;
+    display: flex;
+}
+
+.month_empty_block {
+    font-weight: 400;
+}
+
+
+.month-circle {
+    margin: 7px 6px 0 0;
+    background-color: black;
+    border-radius: 50%;
+    width: 8px;
+    height: 8px;
 }
