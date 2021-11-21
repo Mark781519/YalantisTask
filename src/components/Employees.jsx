@@ -12,7 +12,7 @@ const Employees = () => {
   const [, setCachedData] = storageData
 
   useEffect(() => {
-    setCachedData(state)
+    setCachedData(state.activeList)
   }, [setCachedData, state])
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const Employees = () => {
     <div className="employees_container">
       <div className="employees_list">
         <div className="header">Employees</div>
-        {state.spiner ? <p>Loading...</p> : <EmployeesList />}
+        {state.loading ? <p>Loading...</p> : <EmployeesList />}
       </div>
 
       <div className="birthday_list">

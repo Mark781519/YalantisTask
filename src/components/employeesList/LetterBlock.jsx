@@ -15,13 +15,17 @@ const LetterBlock = ({letter}) => {
     <div className="letter_container">
       <div className="letter">{letter}</div>
       {letterData.length > 0 ? (
-        <div className="letter_block">
+        <div
+          className={
+            letterData.length > 6 ? "letter_block_withScroll" : "letter_block"
+          }
+        >
           {letterDataSort(letterData).map(el => (
             <EmployeeBlock employee={el} key={el.id} />
           ))}
         </div>
       ) : (
-        <div className="letter-block">
+        <div className="letter_block">
           <p>No Employees</p>
         </div>
       )}

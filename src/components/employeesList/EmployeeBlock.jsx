@@ -9,7 +9,8 @@ const EmployeeBlock = ({employee}) => {
   const toggleActive = useToggleActive()
   const toggleNotActive = useToggleNotActive()
   const state = useAppContext()
-  const isActive = state.checkedList.includes(employee.id)
+  const checkedList = state.activeList.map(el => el.id)
+  const isActive = checkedList.includes(employee.id)
 
   return (
     <div className="employee">

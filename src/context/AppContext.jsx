@@ -7,9 +7,8 @@ const AppDispatchContext = createContext()
 
 const initialState = {
   activeList: [],
-  checkedList: [],
   employeesList: [],
-  spiner: true,
+  loading: true,
   error: false,
 }
 
@@ -19,16 +18,17 @@ function reducer(state, action) {
       return {
         ...state,
         employeesList: action.data,
-        spiner: false,
+        loading: false,
       }
-    case "showEmployeesFromCache":
+    case "getDataFromCache":
       return {
-        ...action.cachedState,
+        ...state,
+        activeList: action.cachedData,
       }
     case "catchError":
       return {
         ...state,
-        spiner: false,
+        loading: false,
         error: true,
       }
 
@@ -38,17 +38,12 @@ function reducer(state, action) {
         activeList: state.activeList.includes(action.value)
           ? [...state.activeList]
           : [action.value, ...state.activeList],
-
-        checkedList: state.checkedList.includes(action.value.id)
-          ? [...state.checkedList]
-          : [action.value.id, ...state.checkedList],
       }
 
     case "toggleNotActive":
       return {
         ...state,
         activeList: state.activeList.filter(el => el.id !== action.value.id),
-        checkedList: state.checkedList.filter(el => el !== action.value.id),
       }
 
     default:
@@ -87,21 +82,20 @@ export const useDispatchContext = () => {
 export const useLoadEmployees = () => {
   const dispatch = useDispatchContext()
   const storageData = useLocalStorage("CACHED_DATA")
-  const [cachedState] = storageData
+  const [cachedData] = storageData
 
   const loadEmployees = useCallback(() => {
-    if (cachedState) {
-      return dispatch({type: "showEmployeesFromCache", cachedState})
-    } else {
-      return getData().then(data => {
-        if (Array.isArray(data)) {
-          dispatch({type: "showEmployees", data})
-        } else {
-          dispatch({type: "catchError"})
+    return getData().then(data => {
+      if (Array.isArray(data)) {
+        dispatch({type: "showEmployees", data})
+        if (cachedData) {
+          dispatch({type: "getDataFromCache", cachedData})
         }
-      })
-    }
-  }, [cachedState, dispatch])
+      } else {
+        dispatch({type: "catchError"})
+      }
+    })
+  }, [cachedData, dispatch])
   return loadEmployees
 }
 

@@ -1,6 +1,6 @@
-import { AppStateProvider } from "./context/AppContext";
-import Employees from "./components/Employees";
-import "./App.css";
+import {AppStateProvider} from "./context/AppContext"
+import Employees from "./components/Employees"
+import "./App.css"
 
 const App = () => {
   return (
@@ -9,7 +9,7 @@ const App = () => {
         <Employees />
       </div>
     </AppStateProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App

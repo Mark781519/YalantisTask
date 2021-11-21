@@ -7,7 +7,7 @@ const EmployeesList = () => {
   return (
     <>
       {state.error ? (
-        <p>Error</p>
+        <p>Something went wrong....</p>
       ) : (
         <div className="employees_block">
           <LetterBlock letter={"A"} />
