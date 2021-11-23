@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/YalantisTask/static/css/main.d6265329.chunk.css",
+    "main.js": "/YalantisTask/static/js/main.a62bcde8.chunk.js",
+    "main.js.map": "/YalantisTask/static/js/main.a62bcde8.chunk.js.map",
+    "runtime-main.js": "/YalantisTask/static/js/runtime-main.5e8cc804.js",
+    "runtime-main.js.map": "/YalantisTask/static/js/runtime-main.5e8cc804.js.map",
+    "static/js/2.388f3a23.chunk.js": "/YalantisTask/static/js/2.388f3a23.chunk.js",
+    "static/js/2.388f3a23.chunk.js.map": "/YalantisTask/static/js/2.388f3a23.chunk.js.map",
+    "index.html": "/YalantisTask/index.html",
+    "static/css/main.d6265329.chunk.css.map": "/YalantisTask/static/css/main.d6265329.chunk.css.map",
+    "static/js/2.388f3a23.chunk.js.LICENSE.txt": "/YalantisTask/static/js/2.388f3a23.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5e8cc804.js",
+    "static/js/2.388f3a23.chunk.js",
+    "static/css/main.d6265329.chunk.css",
+    "static/js/main.a62bcde8.chunk.js"
+  ]
+}
